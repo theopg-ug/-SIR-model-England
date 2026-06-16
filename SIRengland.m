@@ -30,7 +30,6 @@ ylim([0,3500]) % sets a Y-axis limit to make the data easier to digest
 xlim([datetime(2020,1,1),datetime(2020,7,1)]) % sets an x-axis limit to make the data easier to digest
 xlabel('Time (months)'), ylabel('Hospital Admissions (per day)') % label axes
 
-S_start = y(1,1); % stores the value for S at the start of the simulation so total infections be found
 params.beta = 0.064; % fits the secondary model (beta 1) line to the data
 new_init = y(model_dates==lockdown,:); % Sets a new initial conditions where the SIR values from the given lockdown date are taken and provided as the starting SIR values
 [t,y] = ode45(@(t,y) SIR_model(t,y,params),time_interval,new_init); % run the simulation, using the function below. ode45 takes values at a specific time from dydt, they get plotted and then moves forward in time by 1 and passes to SIR to find the value for that time
